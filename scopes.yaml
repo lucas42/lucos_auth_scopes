@@ -1,0 +1,22 @@
+# lucOS authorisation scope vocabulary
+#
+# Format: service:capability
+# Namespaced by owning service. Enforcement is per-backend — only the owning
+# service knows what each capability permits; aithne asserts, backends decide.
+#
+# This vocabulary is build-time coupled: changing it requires a rebuild and
+# redeploy of lucos_aithne and lucos_creds to take effect.
+# (See lucos_aithne ADR-0001 §7 for design rationale.)
+#
+# Default-deny: scopes are added one at a time as consumers actually need them.
+# Never add a scope speculatively.
+
+scopes:
+  # lucos_aithne — authentication and session service
+  aithne:
+    - render-ui   # dev-environment only: GET access to render any service's UI;
+                  # not for production agent grants (read-only — no mutations)
+
+  # lucos_photos — photo management
+  photos:
+    - add         # create/upload a new photo
