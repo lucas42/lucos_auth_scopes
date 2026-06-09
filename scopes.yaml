@@ -1,0 +1,14 @@
+# lucOS authorisation scope vocabulary
+# Flat list of valid scope strings. The file IS the allowlist: a scope is valid
+# iff it appears here. The ":" prefix (where present) groups by resource/capability
+# DOMAIN for collision-avoidance — it is NOT an owning service and NOT a structural
+# level. Estate-wide capabilities sit bare.
+#
+# This vocabulary is build-time coupled: changing it requires a rebuild and
+# redeploy of lucos_aithne and lucos_creds to take effect.
+# (See lucos_aithne ADR-0001 §7 for design rationale.)
+#
+# Default-deny: add a scope only when a real consumer needs it.
+
+scopes:
+  - render-ui   # dev-only: GET-render any service's UI (e.g. lucos-ux page snapshots)
