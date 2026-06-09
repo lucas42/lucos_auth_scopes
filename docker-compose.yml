@@ -1,0 +1,8 @@
+# This docker-compose exists solely for the CI build step (lucos/build orb uses
+# Docker Bake and requires a service with a build: block).
+# lucos_auth_scopes is a config artefact — it is never deployed as a running service.
+services:
+  lucos_auth_scopes_vocabulary:
+    build: .
+    container_name: lucos_auth_scopes_vocabulary
+    image: lucas42/lucos_auth_scopes_vocabulary:${VERSION:-latest}
