@@ -7,4 +7,3 @@ workflows:
     jobs:
       - lucos/release-docker:
           serial-group: << pipeline.project.slug >>/build/<< pipeline.git.branch >>
-          platform: ""
