@@ -11,4 +11,5 @@
 # Default-deny: add a scope only when a real consumer needs it.
 
 scopes:
-  - render-ui   # dev-only: GET-render any service's UI (e.g. lucos-ux page snapshots)
+  - render-ui    # dev-only: GET-render any service's UI (e.g. lucos-ux page snapshots)
+  - aithne:admin # full admin surface: scope-grant authority + account enrolment/recovery (gates lucos_aithne#9)
