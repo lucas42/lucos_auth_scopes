@@ -13,3 +13,14 @@
 scopes:
   - render-ui    # dev-only: GET-render any service's UI (e.g. lucos-ux page snapshots)
   - aithne:admin # full admin surface: scope-grant authority + account enrolment/recovery (gates lucos_aithne#9)
+
+  # eolas scopes
+  - eolas:read   # read eolas metadata entities (GET endpoints on /metadata/*)
+  - eolas:write  # create/modify eolas metadata entities (POST /metadata/{type}/)
+
+  # media-metadata scopes
+  - media-metadata:read  # read media metadata (GET /v3/* and GET /v2/export)
+  - media-metadata:write # mutate media metadata (POST/PATCH/DELETE /v3/*)
+
+  # estate-wide bundled scopes
+  - webhook      # receive Loganne webhook events (POST /webhooks); held by lucos_loganne
