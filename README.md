@@ -21,7 +21,7 @@ A flat YAML list of strings:
 scopes:
   - render-ui
   - eolas:read
-  - photos:add
+  - photos:write
 ```
 
 That's it — a flat list, not a map. Grouping by service was considered and rejected: a capability often spans services, so a service-keyed structure mis-models it (see "Naming" below).
@@ -30,8 +30,8 @@ That's it — a flat list, not a map. Grouping by service was considered and rej
 
 A scope is either **`domain:capability`** or, for genuinely estate-wide capabilities, a **bare** string.
 
-- **`domain`** is the *resource / capability area*, **not** the owning service. It exists to keep the same capability word from colliding across areas (`photos:add` vs `contacts:add`). It is often coincident with the sole-home service (`eolas`, `media-metadata`) but is **not** required to be the full `lucos_configy` system code.
-- **`capability`** — prefer a small, consistent estate-wide verb set (`read`, `write`, `delete`) for generic CRUD, so "what can principal P do?" reads consistently. Use a domain-specific verb only where a generic one would mislead (`photos:add`).
+- **`domain`** is the *resource / capability area*, **not** the owning service. It exists to keep the same capability word from colliding across areas (`photos:read` vs `contacts:read`). It is often coincident with the sole-home service (`eolas`, `media-metadata`) but is **not** required to be the full `lucos_configy` system code.
+- **`capability`** — prefer a small, consistent estate-wide verb set (`read`, `write`, `delete`) for generic CRUD, so "what can principal P do?" reads consistently. Use a domain-specific verb only where a generic one would genuinely mislead (e.g. a hypothetical append-only `:add`, where the generic `:write` would overstate the capability).
 - **Bare scopes** are for capabilities that are genuinely cross-cutting — held estate-wide by a principal that needs them everywhere, with a uniform contract on every service. Current examples:
   - `render-ui` — dev-only: GET-render any service's UI (e.g. `lucos-ux` page snapshots).
   - `webhook` — deliver an event notification to any service's `/webhooks` (held by `lucos_loganne`). Bundled deliberately: the sole holder needs it estate-wide, so per-service scopes would add no least-privilege value and would *silently fail-closed* delivery to any newly-added service until re-granted. Safe precisely because `/webhooks` is a uniform, narrow, accept-202-enqueue contract everywhere.
