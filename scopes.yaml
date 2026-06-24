@@ -20,6 +20,7 @@ scopes:
   # eolas scopes
   - eolas:read   # read eolas metadata entities (GET endpoints on /metadata/*)
   - eolas:write  # create/modify eolas metadata entities (POST /metadata/{type}/)
+  - eolas:admin  # eolas Django admin (grants is_staff + is_superuser)
 
   # media-metadata scopes
   - media-metadata:read  # read media metadata (GET /v3/* and GET /v2/export)
@@ -29,7 +30,8 @@ scopes:
   - backups:use    # full use of the backups UI: status dashboards + refresh actions
 
   # contacts scopes (lucos_contacts)
-  - contacts:use   # full use of the contacts UI: view & edit people, lists & calendar
+  - contacts:read   # readonly browse layer (GET endpoints on people, lists & calendar)
+  - contacts:admin  # contacts Django admin (grants is_staff + is_superuser)
 
   # creds scopes (lucos_creds)
   - creds:admin    # lucos_creds admin UI: manage credentials & linked-credential scopes (privileged console)
