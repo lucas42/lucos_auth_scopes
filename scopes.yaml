@@ -17,40 +17,35 @@ scopes:
   # arachne scopes
   - arachne:read   # read the arachne knowledge graph (gates /explore UI and /mcp API)
 
-  # eolas scopes (lucos_eolas) — the eolas UI reuses these: a scope gates a capability, not an interface
-  - eolas:read   # read eolas metadata entities (GET /metadata/* and the eolas UI views)
-  - eolas:write  # create/modify eolas metadata entities (POST /metadata/{type}/ and UI edits)
+  # eolas scopes
+  - eolas:read   # read eolas metadata entities (GET endpoints on /metadata/*)
+  - eolas:write  # create/modify eolas metadata entities (POST /metadata/{type}/)
 
-  # media-metadata scopes (lucos_media_metadata_api) — the lucos_media_metadata_manager front-end reuses these
-  - media-metadata:read  # read media metadata (GET /v3/*, GET /v2/export, and the manager UI)
-  - media-metadata:write # mutate media metadata (POST/PATCH/DELETE /v3/* and manager UI edits)
+  # media-metadata scopes
+  - media-metadata:read  # read media metadata (GET /v3/* and GET /v2/export)
+  - media-metadata:write # mutate media metadata (POST/PATCH/DELETE /v3/*)
 
   # backups scopes (lucos_backups)
-  - backups:read   # view the backup summary & per-host status dashboards (GET /, /hosts/*)
-  - backups:write  # trigger operational refresh actions (/refresh-tracking, /refresh-config)
+  - backups:use    # full use of the backups UI: status dashboards + refresh actions
 
   # contacts scopes (lucos_contacts)
-  - contacts:read   # view people, lists & calendar (GET /people/*, /calendar)
-  - contacts:write  # add / import / edit contacts & relationships
+  - contacts:use   # full use of the contacts UI: view & edit people, lists & calendar
 
   # creds scopes (lucos_creds)
-  - creds:admin    # lucos_creds admin UI: manage credentials & linked-credential scopes (privileged console; no meaningful read-only posture)
+  - creds:admin    # lucos_creds admin UI: manage credentials & linked-credential scopes (privileged console)
 
-  # loganne scopes (lucos_loganne) — the machine delivery path holds the bare `webhook` scope below
-  - loganne:read   # view the event-log UI (GET /view and the event list)
-  - loganne:write  # trigger webhook re-delivery (POST /retry-webhooks, /:uuid/retry-webhooks)
+  # loganne scopes (lucos_loganne) — the machine delivery path holds the bare `webhook` scope below;
+  # adding events to loganne would be a separate scope if/when a consumer needs it
+  - loganne:use    # full use of the loganne human UI: view the event log + operator retry actions
 
-  # media-seinn scopes (lucos_media_seinn)
-  - media-seinn:read   # view the player & now-playing state (GET /)
-  - media-seinn:write  # control playback (POST /play, /pause, /next, /volume)
+  # media-manager scopes (lucos_media_manager; lucos_media_seinn is a UI wrapper and shares this scope)
+  - media-manager:use   # full use of the media player UI (manager + seinn)
 
   # notes scopes (lucos_notes)
-  - notes:read   # read notes & lists (GET /<list>, /<list>/<item>, /todo.json)
-  - notes:write  # create / edit / delete notes & lists (PUT/DELETE /api/list/*, /api/item/*)
+  - notes:use   # full use of the notes UI: read & write notes & lists
 
   # photos scopes (lucos_photos)
-  - photos:read   # view photos, people & faces (GET /photos/*, /people/*)
-  - photos:write  # manage people, faces & tags — link, merge & edit (POST/PUT/DELETE /people/*, /faces/*)
+  - photos:use  # full use of the photos UI: view & manage photos, people & faces
 
   # estate-wide bundled scopes
   - webhook      # receive Loganne webhook events (POST /webhooks); held by lucos_loganne
