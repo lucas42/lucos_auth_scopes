@@ -31,6 +31,7 @@ scopes:
 
   # contacts scopes (lucos_contacts)
   - contacts:read   # readonly browse layer (GET endpoints on people, lists & calendar)
+  - contacts:write  # create/modify contacts (POST /people/import; machine importers use this)
   - contacts:admin  # contacts Django admin (grants is_staff + is_superuser)
 
   # creds scopes (lucos_creds)
