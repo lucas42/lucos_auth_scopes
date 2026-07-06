@@ -50,5 +50,8 @@ scopes:
   # photos scopes (lucos_photos)
   - photos:use  # full use of the photos UI: view & manage photos, people & faces
 
+  # locations scopes (lucos_locations)
+  - locations:read  # read the human map/history UI of lucos_locations / owntracks frontend
+
   # estate-wide bundled scopes
   - webhook      # receive Loganne webhook events (POST /webhooks); held by lucos_loganne
