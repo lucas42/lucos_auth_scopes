@@ -53,5 +53,8 @@ scopes:
   # locations scopes (lucos_locations)
   - locations:read  # read the human map/history UI of lucos_locations / owntracks frontend
 
+  # worlds scopes (lucos_worlds) — maps onto a BookStack role via OIDC group sync (lucos_worlds#17)
+  - worlds:admin  # full BookStack admin access to the worldbuilding wiki
+
   # estate-wide bundled scopes
   - webhook      # receive Loganne webhook events (POST /webhooks); held by lucos_loganne
