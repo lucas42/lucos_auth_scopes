@@ -13,6 +13,7 @@
 scopes:
   - render-ui    # dev-only: GET-render any service's UI (e.g. lucos-ux page snapshots)
   - aithne:admin # full admin surface: scope-grant authority + account enrolment/recovery (gates lucos_aithne#9)
+  - aithne:read  # read-only visibility into aithne's own grant state (e.g. "is scope X already granted to principal Y?") — NOT grant/revoke authority; see aithne:admin for that (gates lucos_aithne#302)
 
   # arachne scopes
   - arachne:read   # read the arachne knowledge graph (gates /explore UI and /mcp API)
