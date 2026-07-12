@@ -35,8 +35,12 @@ scopes:
   - contacts:write  # create/modify contacts (POST /people/import; machine importers use this)
   - contacts:admin  # contacts Django admin (grants is_staff + is_superuser)
 
-  # creds scopes (lucos_creds)
-  - creds:admin    # lucos_creds admin UI: manage credentials & linked-credential scopes (privileged console)
+  # creds scopes (lucos_creds) — creds:admin is defined (ADR-0004) as
+  # encompassing exactly the three scopes below.
+  - creds:admin              # lucos_creds admin UI: manage credentials & linked-credential scopes (privileged console)
+  - creds:metadata:read      # list systems/clients/linked-credential graph/scope strings — no decrypted values (lucos_creds ADR-0004)
+  - creds:secret:read        # read decrypted credential values and the assembled .env (lucos_creds ADR-0004)
+  - creds:write              # set/delete credentials and create/delete linked credentials (lucos_creds ADR-0004)
 
   # loganne scopes (lucos_loganne) — the machine delivery path holds the bare `webhook` scope below;
   # adding events to loganne would be a separate scope if/when a consumer needs it
