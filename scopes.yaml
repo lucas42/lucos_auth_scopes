@@ -61,5 +61,8 @@ scopes:
   # worlds scopes (lucos_worlds) — maps onto a BookStack role via OIDC group sync (lucos_worlds#17)
   - worlds:admin  # full BookStack admin access to the worldbuilding wiki
 
+  # campaigns scopes (lucos_campaigns)
+  - campaigns:use   # full use of the Kanka campaign-management UI behind the aithne gate
+
   # estate-wide bundled scopes
   - webhook      # receive Loganne webhook events (POST /webhooks); held by lucos_loganne
